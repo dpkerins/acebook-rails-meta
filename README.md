@@ -10,7 +10,10 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
-
+  **Please run this command from the project directory**
+  ```
+   cp pre-push .git/hooks/
+  ```
 * Database creation
 
 * Database initialization
