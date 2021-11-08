@@ -7,8 +7,10 @@ Things you may want to cover:
 
 * Ruby version
 
+  3.0.2
 * System dependencies
 
+  Rails >= 6.1.4
 * Configuration
 
   **Please run this command from the project directory**
@@ -17,6 +19,11 @@ Things you may want to cover:
   ```
 * Database creation
 
+  ![Screenshot](db.jpg)
+
+* Web creation
+
+  ![Screenshot](web.jpg)
 * Database initialization
 
 * How to run the test suite
