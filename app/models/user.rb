@@ -23,4 +23,5 @@ class User < ApplicationRecord
       minimum: 8,
       if: :require_password?
   }
+  has_many :posts
 end
