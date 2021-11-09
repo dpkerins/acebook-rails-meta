@@ -25,5 +25,7 @@
   <%= @user.admin %>
 </p>
 
+<%= image_tag @user.avatar %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
