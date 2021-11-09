@@ -42,20 +42,9 @@
     <%= form.check_box :admin %>
   </div>
 
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
-  </div>
-
-  <div class="field">
-    <%= form.label :approved %>
-    <%= form.check_box :approved %>
-  </div>
-
-  <div class="field">
-    <%= form.label :confirmed %>
-    <%= form.check_box :confirmed %>
-  </div>
+    <%= form.hidden_field :active, value: true %>
+    <%= form.hidden_field :approved, value: true %>
+    <%= form.hidden_field :confirmed, value: true %>
 
   <div class="actions">
     <%= form.submit %>
