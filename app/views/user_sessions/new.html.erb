@@ -15,8 +15,7 @@
     <div class="col-6 mx-auto text-align-center bg-light border rounded-3 p-5 m-5">
       <div class="mb-3">
         <%= f.label :email %>
-        <%= f.text_field :email, class:"form-control", id:"exampleInputEmail1"%>
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <%= f.email_field :email, class:"form-control", id:"exampleInputEmail1"%>
       </div>
       <div class="mb-3">
         <%= f.label :password %>
