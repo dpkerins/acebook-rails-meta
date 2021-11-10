@@ -17,13 +17,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :likes %>
-    <%= form.number_field :likes %>
+    <%= form.hidden_field :likes, value: 0 %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
   <%= form.file_field :image %><br>
