@@ -9,3 +9,4 @@ Welcome stranger
 <%= link_to "Register", new_user_path%>
 <%= link_to "Login", new_user_session_path%>
 <% end %>
+<%= render '/posts/all', post: @post %>
