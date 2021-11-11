@@ -25,7 +25,11 @@
   <%= @user.admin %>
 </p>
 
-<%= image_tag @user.avatar %>
+<% if @user.avatar.attached? %>
+<%= image_tag(@user.avatar, height:"200px") %>
+<% else %>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" style="height: 200px;">
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
