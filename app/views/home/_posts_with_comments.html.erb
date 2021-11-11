@@ -63,6 +63,7 @@
               <div class="text-end">Posted at: <%= post.created_at.strftime("%d/%m/%Y") %></div>
               <%= image_tag(post.image, class:"card-img") if post.image.attached? %>
               <p><%= post.content %></p>
+              <%= link_to 'View Post', post%>
               <hr>
               Comment Count | <%= post.likes %> likes
               <div class="text-end">
