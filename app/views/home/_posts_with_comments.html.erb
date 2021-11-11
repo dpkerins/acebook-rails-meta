@@ -7,11 +7,10 @@
 <br><br>
 
 <div>
-  <% @posts.each do |post| %>
+  <% @posts.reverse_each do |post| %>
     <% user = User.find(post.user_id) %>
     <div style="border:1px solid #000000;">
       <div style="border:1px solid #000000;">
-        <img src="<%= user.avatar if user.avatar.attached? %>" alt="">
         <%= image_tag(user.avatar, height:"50px") if user.avatar.attached? %>
         <%= user.first_name %> <%= user.last_name %>
       </div>
@@ -21,7 +20,6 @@
       </div>
       <div style="border:1px solid #000000;">
         <%= post.likes %> Likes
-        Comments Link
       </div>
       <div style="border:1px solid #000000;">
         <%= link_to 'View Post', post%>
@@ -45,7 +43,7 @@
         </thead>
 
         <tbody>
-            <% post.comments.each do |comment| %>
+            <% post.comments.reverse_each do |comment| %>
             <tr>
                 <td><%= comment.content %></td>
                 <td><%= comment.user_id %></td>
