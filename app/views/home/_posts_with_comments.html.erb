@@ -5,7 +5,27 @@
 <%= link_to 'New Post', new_post_path %>
 <% end %>
 <br><br>
+<hr>
+<h1>New Styling</h1>
+<% @posts.each do |post| %>
+  <% user = User.find(post.user_id) %>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-username">
+        <img src="<%= user.avatar if user.avatar.attached? %>" alt="">
+        <%= image_tag(user.avatar, height:"50px") if user.avatar.attached? %>
+        <%= user.first_name %> <%= user.last_name %>
+      </h3>
+      <p><%= post.content %></p>
 
+
+    </div>
+  </div>
+  <br>
+<% end %>
+
+<hr>
+<h1>Old Styling</h1>
 <div>
   <% @posts.reverse_each do |post| %>
     <% user = User.find(post.user_id) %>
