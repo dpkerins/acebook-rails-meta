@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
-
+<% if current_user %>
 <%= link_to 'New Post', new_post_path %>
+<% end %>
 <br><br>
 
 <div>
@@ -24,9 +25,11 @@
       </div>
       <div style="border:1px solid #000000;">
         <%= link_to 'View Post', post%>
+        <% if current_user %>
         <% if current_user.id == post.user_id %>
         <%= link_to 'Edit', edit_post_path(post) %>
         <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
         <% end %>
       </div>
       <div style="border:1px solid #000000;">
