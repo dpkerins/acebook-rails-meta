@@ -9,24 +9,29 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
+    <div class="container">
+      <div class="">
+        <div class="bg-light border rounded-3 p-5 m-5">
+          <legend>New Post</legend>
+          <div class="form-floating mb-3">
+            <%= form.text_area :content, class:"form-control p-1" %>
+          </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
+          <div class="field">
+            <%= form.hidden_field :likes, value: 0 %>
+          </div>
 
-  <div class="field">
-    <%= form.hidden_field :likes, value: 0 %>
-  </div>
+          <div class="field">
+            <%= form.hidden_field :user_id, value: current_user.id %>
+          </div>
 
-  <div class="field">
-    <%= form.hidden_field :user_id, value: current_user.id %>
-  </div>
+          <%= form.file_field :image, class: "form-control mt-3" %><br>
 
-  <%= form.file_field :image %><br>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+          <div class="actions">
+            <%= form.submit "Post", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
 <% end %>
