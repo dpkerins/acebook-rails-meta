@@ -7,7 +7,7 @@
 <br><br>
 
 <div>
-  <% @posts.each do |post| %>
+  <% @posts.reverse_each do |post| %>
     <% user = User.find(post.user_id) %>
     <div style="border:1px solid #000000;">
       <div style="border:1px solid #000000;">
@@ -24,7 +24,6 @@
       </div>
       <div style="border:1px solid #000000;">
         <%= post.likes %> Likes
-        Comments Link
       </div>
       <div style="border:1px solid #000000;">
         <%= link_to 'View Post', post%>
@@ -48,7 +47,7 @@
         </thead>
 
         <tbody>
-            <% post.comments.each do |comment| %>
+            <% post.comments.reverse_each do |comment| %>
             <tr>
                 <td><%= comment.content %></td>
                 <td><%= comment.user_id %></td>
