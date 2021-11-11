@@ -2,29 +2,33 @@
 
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Likes</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.content %></td>
-        <td><%= post.likes %></td>
-        <td><%= post.user_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div>
+  <% @posts.each do |post| %>
+    <% user = User.find(post.user_id) %>
+    <div style="border:1px solid #000000;">
+      <div style="border:1px solid #000000;">
+        <img src="<%= user.avatar if user.avatar.attached? %>" alt="">
+        <%= image_tag(user.avatar, height:"50px") if user.avatar.attached? %>
+        <%= user.first_name %> <%= user.last_name %>
+      </div>
+      <div style="border:1px solid #000000;">
+        <%= image_tag(post.image, height:"250px") if post.image.attached? %>
+        <%= post.content %>
+      </div>
+      <div style="border:1px solid #000000;">
+        <%= post.likes %> Likes
+        Comments Link
+      </div>
+      <div style="border:1px solid #000000;">
+        <%= link_to 'View Post', post%>
+        <% if current_user.id == post.user_id %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<div>
 
 <br>
 
