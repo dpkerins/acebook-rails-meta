@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @posts = Post.where(user_id: @user)
   end
 
   # GET /users/new

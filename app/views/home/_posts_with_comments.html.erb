@@ -24,6 +24,11 @@
       </div>
       <div style="border:1px solid #000000;">
         <%= post.likes %> Likes
+        <% if current_user %>
+        <%= link_to 'Like', like_path(post_id: post.id), method: :post%>
+        <% end %>
+        <br>
+        Comments Link
       </div>
       <div style="border:1px solid #000000;">
         <%= link_to 'View Post', post%>
