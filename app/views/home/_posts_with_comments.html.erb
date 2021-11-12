@@ -17,6 +17,9 @@
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" style="height: 50px;">
         <% end %>
         <%= user.first_name %> <%= user.last_name %>
+        <time>
+          <%= display_post_time(post.created_at) %>
+        </time>
       </div>
       <div style="border:1px solid #000000;">
         <%= image_tag(post.image, height:"250px") if post.image.attached? %>
