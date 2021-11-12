@@ -17,7 +17,7 @@
       </ul>
       <div class="col-md-3 text-end">
         <% if current_user %> 
-          Welcome <%= current_user.first_name %>!
+          <span class="rainbow rainbow_text_animated">Welcome <%= current_user.first_name %>!</span>
           <%= link_to "Log out", current_user_session, method: :delete, class: "btn btn-outline-primary me-2" %>
         <% else %>
           <%= link_to "Login", new_user_session_path, class: "btn btn-outline-primary me-2" %>

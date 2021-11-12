@@ -227,7 +227,11 @@ GEM
     zeitwerk (2.5.1)
 
 PLATFORMS
+<<<<<<< HEAD
   x86_64-darwin-18
+=======
+  x86_64-darwin-20
+>>>>>>> main
 
 DEPENDENCIES
   authlogic
