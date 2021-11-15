@@ -1,8 +1,8 @@
 <%= form_with(model: comment) do |form| %>
   <% if comment.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       <ul>
         <% comment.errors.each do |error| %>
           <li><%= error.full_message %></li>
