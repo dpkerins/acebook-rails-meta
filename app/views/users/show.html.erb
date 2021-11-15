@@ -3,12 +3,12 @@
 <div class="container w-100 h-100 m-0" style="min-width: 400px;">
   <div class="row">
     <div class="bg-light border rounded-3 p-4 pt-3 m-3 d-flex justify-content-between">
-      <div class="col-4">
-        <div class="w-100 m-0 p-0 border rounded-3">
+      <div class="col-3">
+        <div class="w-100 m-0 p-0 rounded-3">
           <% if @user.avatar.attached? %>
-          <%= image_tag(@user.avatar, class:"img-fluid") %>
+          <%= image_tag(@user.avatar, class:"img-fluid rounded-circle") %>
           <% else %>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" class="img-fluid">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" class="img-fluid rounded-circle">
           <% end %>
         </div>
 
@@ -40,82 +40,12 @@
         
       </div>
       
-      <div class="col-7">
+      <div class="col-8">
         
 
         <div class="">
           <h4><%= @user.first_name %>'s Posts:</h4>
-          <% @posts.reverse_each do |post| %>
-            <% user = User.find(post.user_id) %>
-            <div style="border:1px solid #000000;">
-              <div style="border:1px solid #000000;">
-                <% if user.avatar.attached? %>
-                <%= image_tag(user.avatar, height:"50px") %>
-                <% else %>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" style="height: 50px;">
-                <% end %>
-                <%= user.first_name %> <%= user.last_name %>
-              </div>
-              <div style="border:1px solid #000000;">
-                <%= image_tag(post.image, height:"250px") if post.image.attached? %>
-                <%= post.content %>
-              </div>
-              <div style="border:1px solid #000000;">
-                <%= post.likes %> Likes
-                <% if current_user %>
-                <%= link_to 'Like', like_path(post_id: post.id), method: :post%>
-                <% end %>
-                <br>
-                Comments Link
-              </div>
-              <div style="border:1px solid #000000;">
-                <%= link_to 'View Post', post%>
-                <% if current_user %>
-                <% if current_user.id == post.user_id %>
-                <%= link_to 'Edit', edit_post_path(post) %>
-                <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-                <% end %>
-                <% end %>
-              </div>
-              <div style="border:1px solid #000000;">
-                <table style="margin-left: 50px;">
-                <h3 style="margin-left: 50px;">Comments</h3>
-                <thead>
-                    <tr>
-                    <th>Content</th>
-                    <th>User</th>
-                    <th>Post</th>
-                    <th colspan="3"></th>
-                    </tr>
-                </thead>
-        
-                <tbody>
-                    <% post.comments.reverse_each do |comment| %>
-                    <tr>
-                        <td><%= comment.content %></td>
-                        <td><%= comment.user_id %></td>
-                        <td><%= comment.post_id %></td>
-                        <td><%= link_to 'Show', comment %></td>
-                        <% if current_user %>
-                        <% if current_user.id == comment.user_id %>
-                        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-                        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                        <% end %>
-                        <% end %>
-                    </tr>
-                    <% end %>
-                </tbody>
-                
-                </table>
-        
-                <br>
-                <% if current_user %>
-                <span style="margin-left: 50px;"><%= link_to 'New Comment', new_comment_path(post_id: post.id) %></span>
-                <% end %>
-                <br><br>
-              </div>
-            </div>
-          <% end %>
+          <%= render 'home/posts_with_comments' %>
         <div>
         
       </div>
