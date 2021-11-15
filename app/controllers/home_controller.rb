@@ -4,16 +4,21 @@ class HomeController < ApplicationController
 
   def index
     @posts = Post.all
-    @users = User.all
   end
 
   def like
-    number = @like.likes + 1
+    @like.liked_by = "" if @like.liked_by.nil?
     respond_to do |format|
-      if @like.update(likes: number)
-        format.html { redirect_to root_url, notice: "Like was successfully updated." }
+      unless @like.liked_by.include?(",#{current_user.id},")
+        liked_by = @like.liked_by + ",#{current_user.id},"
+        number = @like.likes + 1
+        if @like.update(likes: number, liked_by: liked_by)
+          format.html { redirect_to root_url, notice: "Like was successfully updated." }
+        else
+          format.html { redirect_to root_url, notice: "Like was unsuccessful." }
+        end
       else
-        format.html { redirect_to root_url, notice: "Like was unsuccessful." }
+        format.html { redirect_to root_url, notice: "You already liked the post" }
       end
     end
   end
