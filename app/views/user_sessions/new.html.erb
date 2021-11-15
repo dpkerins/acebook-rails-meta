@@ -1,7 +1,8 @@
 <%= form_for @user_session, url: user_sessions_url do |f| %>
   <% if @user_session.errors.any? %>
-  <div class="alert alert-warning"id="error_explanation">
+  <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
     <h2><%= pluralize(@user_session.errors.count, "error") %> prohibited:</h2>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     <ul>
       <% @user_session.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
