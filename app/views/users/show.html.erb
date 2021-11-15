@@ -1,35 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<div class="container w-100 h-100 m-0" style="min-width: 400px;">
+  <div class="row">
+    <div class="bg-light border rounded-3 p-4 pt-3 m-3 d-flex justify-content-between">
+      <div class="col-3">
+        <div class="w-100 m-0 p-0 rounded-3">
+          <% if @user.avatar.attached? %>
+          <%= image_tag(@user.avatar, class:"img-fluid rounded-circle") %>
+          <% else %>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" class="img-fluid rounded-circle">
+          <% end %>
+        </div>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+        <div>
+          <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+        </div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+        <div>
+          <span>
+            <%= @user.email %>
+          </span>
+        </div>
+  
+        <div>
+          <span>
+            <strong>Admin:</strong>
+            <%= @user.admin %>
+          </span>
+        </div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+      
+        <% if current_user %>
+        <% if current_user.id == @user.id %>
+        <div class="d-flex justify-content-center">
+          <%= link_to 'Edit My Profile', edit_user_path(@user), class:"btn btn-lg btn-primary" %>
+        </div>
+        <% end %>
+        <% end %>
+        
+      </div>
+      
+      <div class="col-8">
+        
 
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-<% if @user.avatar.attached? %>
-<%= image_tag(@user.avatar, height:"200px") %>
-<% else %>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" style="height: 200px;">
-<% end %>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+        <div class="">
+          <h4><%= @user.first_name %>'s Posts:</h4>
+          <%= render 'home/posts_with_comments' %>
+        <div>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
