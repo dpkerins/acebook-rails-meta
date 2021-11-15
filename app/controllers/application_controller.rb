@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user_session, :current_user
-    helper_method :display_post_time
+    helper_method :display_post_time, :find_user_name
 
   private
+
+  def find_user_name(id)
+    User.find(id).first_name.capitalize.+(" #{User.find(id).last_name.chars.first.capitalize}.")
+  end 
 
   def require_user
     unless current_user
