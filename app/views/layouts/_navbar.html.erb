@@ -9,6 +9,11 @@
         <li class="nav-item">
           <%= link_to "Home", "/", class: "nav-link active" %>
         </li>
+        <% if current_user %>
+        <li>
+          <%= link_to "My Profile", "/users/#{current_user.id}", class: "nav-link active" %>
+        </li>
+        <% end %>
       </ul>
       <div class="col-md-3 text-end">
         <% if current_user %> 
