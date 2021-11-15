@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   before_action :set_like, only: %i[ like ]
+  helper_method :find_user_name
 
   def index
     @posts = Post.all
@@ -22,5 +23,9 @@ class HomeController < ApplicationController
   def set_like
     @like = Post.find(params[:post_id])
   end
+
+  def find_user_name(id)
+    User.find(id).first_name.capitalize.+(" #{User.find(id).last_name.chars.first.capitalize}.")
+  end 
 
 end
