@@ -2,11 +2,10 @@
 
 <div>
   <% @posts.each do |post| %>
-    <% user = User.find(post.user_id) %>
     <div style="border:1px solid #000000;">
       <div style="border:1px solid #000000;">
-        <%= avatar_for(user) %>
-        <%= user.first_name %> <%= user.last_name %>
+        <%= avatar_for(post.user_id) %>
+        <%= find_user_name(post.user_id) %>
       </div>
       <div style="border:1px solid #000000;">
         <%= image_tag(post.image, height:"250px") if post.image.attached? %>
