@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+  <div class="card p-6">
+    <div class="d-flex flex-row justify-content-center align-items-center"><%= @user.first_name %> <%= @user.last_name %></div>
+      <div class="image d-flex flex-column justify-content-center align-items-center">
+        <% if @user.avatar.attached? %>
+        <%= image_tag(@user.avatar, height:"200px", class:"rounded-circle") %>
+        <% else %>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" style="height: 200px;">
+        <% end %>
+        <span class="idd"><%= @user.email %></span>
+        <div class=" d-flex mt-2"><%= link_to 'Edit Profile', edit_user_path(@user) %></div>
+      </div>
+        <h5 class="mb-3">Recent posts</h5>
+          <div class="p-4 bg-light rounded shadow-sm">
+            <p class="font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            <ul class="list-inline small text-muted mt-3 mb-0">
+            <li class="list-inline-item"><i class="fa fa-comment-o mr-2"></i>12 Comments</li>
+            <li class="list-inline-item"><i class="fa fa-heart-o mr-2"></i>200 Likes</li>
+            </ul>
+      </div>
+  </div>
+</div>
+<%= link_to "Back", root_path, class: "btn btn-outline-primary me-2" %>
