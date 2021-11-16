@@ -3,7 +3,7 @@ require 'web_helpers'
 
 RSpec.describe 'Comment', type: :system do
   describe 'Edit Comment' do
-    it 'allows user to edit post content' do
+    it 'allows user to edit comment content' do
       login
       create_post_with_img
       click_link 'Home'
