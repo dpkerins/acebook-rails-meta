@@ -2,6 +2,12 @@ class User < ApplicationRecord
     acts_as_authentic do |c|
         c.crypto_provider = ::Authlogic::CryptoProviders::BCrypt
     end
+    validates :first_name,
+    presence: { message: "cannot be empty" }
+
+    validates :last_name,
+    presence: { message: "cannot be empty" }
+
     validates :email,
     format: {
       with: /@/,

@@ -227,7 +227,7 @@ GEM
     zeitwerk (2.5.1)
 
 PLATFORMS
-  x86_64-darwin-18
+  x86_64-darwin-20
 
 DEPENDENCIES
   authlogic
@@ -256,4 +256,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.29
+   2.2.31
