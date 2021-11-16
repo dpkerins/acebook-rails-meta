@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ profile show edit update destroy ]
 
   # GET /users or /users.json
   def index
@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @posts = User.posts
+    user = User.find(current_user.id)
+    @user_posts = user.posts
+    @user_comments = user.comments
   end
 
   # GET /users/1 or /users/1.json

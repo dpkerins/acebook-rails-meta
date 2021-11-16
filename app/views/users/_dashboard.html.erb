@@ -18,6 +18,39 @@
             <li class="list-inline-item"><i class="fa fa-comment-o mr-2"></i>12 Comments</li>
             <li class="list-inline-item"><i class="fa fa-heart-o mr-2"></i>200 Likes</li>
             </ul>
+
+        
+      <% @user_posts.reverse_each do |post| %>
+      <div class="card mb-3">
+        <div class="d-flex justify-content-between p-2 px-3">
+          <div class="d-flex flex-row mt-1 text-muted">
+            <small class="pe-2"><time><%= display_post_time(post.created_at) %></time></small>
+            <i class="bi bi-three-dots"></i>
+          </div>
+        </div>
+        <%= image_tag(post.image, class:"card-img") if post.image.attached? %>
+          <p class="card-text"><%= post.content %></p>
+
+        </div>
+        <% end %>
+
+      <% @user_comments.reverse_each do |comment| %>
+      <div class="card mb-3">
+        <div class="d-flex justify-content-between p-2 px-3">
+          <div class="d-flex flex-row mt-1 text-muted">
+            <small class="pe-2"><time><%= display_post_time(comment.created_at) %></time></small>
+            <i class="bi bi-three-dots"></i>
+          </div>
+        </div>
+    
+          <p class="card-text"><%= comment.content %></p>
+          <p>Comment for Post</p>
+          <p class="card-text"><%= find_post_for_comment(comment.post_id) %></p>
+
+        </div>
+        <% end %>
+
+
       </div>
   </div>
 </div>
