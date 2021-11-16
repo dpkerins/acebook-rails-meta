@@ -10,56 +10,63 @@
       </ul>
     </div>
   <% end %>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="shadow p-4 mx-5 my-0 bg-white rounded-3 ">
+        <legend>
+        <% if page == 'edit' %>
+          Update your account
+        <% else %>
+          Create your account
+        <% end %>
+        </legend>
+        <div class="form-floating mb-3">
+          <%= form.text_field :first_name, class:"form-control", id:"floatingFirstName", placeholder:"First Name" %>
+          <%= form.label :first_name, for:"floatingFirstName" %>
+        </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-6 mx-auto text-align-center bg-light border rounded-3 p-5">
-    
-      <legend>Create your account</legend>
-      <div class="form-floating mb-3">
-        <%= form.text_field :first_name, class:"form-control", id:"floatingFirstName", placeholder:"First Name" %>
-        <%= form.label :first_name, for:"floatingFirstName" %>
-      </div>
+        <div class="form-floating mb-3">
+          <%= form.text_field :last_name, class:"form-control", id:"floatingLastName", placeholder:"Last Name" %>
+          <%= form.label :last_name, for:"floatingLastName" %>
+        </div>
 
-      <div class="form-floating mb-3">
-        <%= form.text_field :last_name, class:"form-control", id:"floatingLastName", placeholder:"Last Name" %>
-        <%= form.label :last_name, for:"floatingLastName" %>
-      </div>
+        <div class="form-floating mb-3">
+          <%= form.email_field :email, class:"form-control", id:"floatingEmail", placeholder:"Email" %>
+          <%= form.label :email, for:"floatingEmail" %>
+        </div>
 
-      <div class="form-floating mb-3">
-        <%= form.email_field :email, class:"form-control", id:"floatingEmail", placeholder:"Email" %>
-        <%= form.label :email, for:"floatingEmail" %>
-      </div>
+        <div class="form-floating mb-3">
+          <%= form.password_field :password, class:"form-control", id:"floatingPassword", placeholder:"Password" %>
+          <%= form.label :password, for:"floatingPassword" %>
+        </div>
 
-      <div class="form-floating mb-3">
-        <%= form.password_field :password, class:"form-control", id:"floatingPassword", placeholder:"Password" %>
-        <%= form.label :password, for:"floatingPassword" %>
-      </div>
+        <div class="form-floating mb-3">
+          <%= form.password_field :password_confirmation, class:"form-control", id:"floatingPasswordConfirmation", placeholder:"Confirm Password" %>
+          <%= form.label :password_confirmation, for:"floatingPasswordConfirmation" %>
+        </div>
 
-      <div class="form-floating mb-3">
-        <%= form.password_field :password_confirmation, class:"form-control", id:"floatingPasswordConfirmation", placeholder:"Confirm Password" %>
-        <%= form.label :password_confirmation, for:"floatingPasswordConfirmation" %>
-      </div>
+        <div class="mb-3">
+          <%= form.label "Upload profile picture", class:"form-label" %>
+          <%= form.file_field :avatar, class:"form-control" %>
+        </div>
 
-      <div class="mb-3">
-        <%= form.label "Upload profile picture", class:"form-label" %>
-        <%= form.file_field :avatar, class:"form-control" %>
-      </div>
+        <div class="mb-3 form-check">
+          <%= form.check_box :admin, class:"form-check-input", id:"adminCheck" %>
+          <%= form.label :admin, class:"form-check-label", for:"adminCheck" %>
+        </div>
 
-      <div class="mb-3 form-check">
-        <%= form.check_box :admin, class:"form-check-input", id:"adminCheck" %>
-        <%= form.label :admin, class:"form-check-label", for:"adminCheck" %>
-      </div>
+          <%= form.hidden_field :active, value: true %>
+          <%= form.hidden_field :approved, value: true %>
+          <%= form.hidden_field :confirmed, value: true %>
 
-        <%= form.hidden_field :active, value: true %>
-        <%= form.hidden_field :approved, value: true %>
-        <%= form.hidden_field :confirmed, value: true %>
-
-      <div class="actions">
-        <%= form.submit "Sign-up", class:"btn btn-primary" %>
+        <div class="actions">
+        <% if page == 'edit' %>
+          <%= form.submit "Update", class:"btn btn-primary" %>
+        <% else %>
+          <%= form.submit "Sign-up", class:"btn btn-primary" %>
+        <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 <% end %>

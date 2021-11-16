@@ -1,6 +1,13 @@
-<%= render 'form', user: @user %>
- 
-<div class="col-6 mx-auto text-align-center p-2">
-  <a href="/" class="btn btn-primary" ><i class="bi bi-arrow-left-square"></i> Back</a>
+
+<div class="col-md-6">
+  <div class="mx-5 my-3">
+    <div>
+      <%= link_to :back, class:"fs-6 link-dark text-decoration-none" do %>
+        <i class="bi bi-arrow-left"></i>
+        Back
+      <% end %>
+    </div>
+  </div>
 </div>
 
+<%= render 'form', user: @user, page: 'new' %>
