@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ profile show edit update destroy ]
   before_action :require_user, :except => [:new, :create]
-  before_action :require_user_admin, :except => [:new, :create, :show, :edit, :update]
+  before_action :require_user_admin, :except => [:new, :create, :show, :edit, :update, :profile]
 
   # GET /users or /users.json
   def index
