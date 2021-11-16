@@ -22,3 +22,9 @@ def create_post_with_img
   attach_file('post_image', Rails.root + 'spec/test_image.png')
   click_button
 end
+
+def create_comment
+  click_link 'Add Comment'
+  fill_in(:comment_content, with: 'This is a test comment')
+  click_button('Comment')
+end
