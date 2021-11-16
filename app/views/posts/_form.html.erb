@@ -35,7 +35,11 @@
           <%= form.file_field :image, class: "form-control my-3" %>
 
           <div class="actions d-flex flex-row-reverse">
-            <%= form.submit "Post", class: "btn btn-primary w-25" %>
+          <% if page == 'edit' %>
+            <%= form.submit "Update", class:"btn btn-primary" %>
+          <% else %>
+            <%= form.submit "Post", class:"btn btn-primary" %>
+          <% end %>
           </div>
         </div>
       </div>

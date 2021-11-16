@@ -33,7 +33,11 @@
         </div>
         
         <div class="actions d-flex flex-row-reverse mt-3">
-          <%= form.submit "Comment", class: "btn btn-primary w-25" %>
+          <% if page == 'edit' %>
+          <%= form.submit "Update", class:"btn btn-primary" %>
+        <% else %>
+          <%= form.submit "Comment", class:"btn btn-primary" %>
+        <% end %>
         </div>
       </div>
     </div>
