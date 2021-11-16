@@ -1,8 +1,8 @@
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,25 +10,37 @@
       </ul>
     </div>
     <% end %>
-    <div class="container w-100 h-100 m-0" style="min-width: 400px;">
-      <div class="bg-light border rounded-3 p-4 pt-3 m-3">
-        <legend>New Post</legend>
-        <div class="form-floating" style="height: 125px;">
-          <%= form.text_area :content, class:"form-control form-control-lg p-1 h-100" %>
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="shadow p-4 mx-5 my-0 bg-white rounded-3 ">
+          <legend>
+          <% if page == 'edit' %>
+            Edit post
+          <% else %>
+            New post
+          <% end %>
+          </legend>
+          <div class="form-floating" style="height: 125px;">
+            <%= form.text_area :content, class:"form-control form-control-lg p-1 h-100" %>
+          </div>
 
-        <div class="field">
-          <%= form.hidden_field :likes, value: 0 %>
-        </div>
+          <div class="field">
+            <%= form.hidden_field :likes, value: 0 %>
+          </div>
 
-        <div class="field">
-          <%= form.hidden_field :user_id, value: current_user.id %>
-        </div>
+          <div class="field">
+            <%= form.hidden_field :user_id, value: current_user.id %>
+          </div>
 
-        <%= form.file_field :image, class: "form-control my-3" %>
+          <%= form.file_field :image, class: "form-control my-3" %>
 
-        <div class="actions d-flex flex-row-reverse">
-          <%= form.submit "Post", class: "btn btn-primary w-25" %>
+          <div class="actions d-flex flex-row-reverse">
+          <% if page == 'edit' %>
+            <%= form.submit "Update", class:"btn btn-primary" %>
+          <% else %>
+            <%= form.submit "Post", class:"btn btn-primary" %>
+          <% end %>
+          </div>
         </div>
       </div>
     </div>

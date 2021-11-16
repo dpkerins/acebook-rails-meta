@@ -1,6 +1,28 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user_session, :current_user
-    helper_method :display_post_time
+    helper_method :display_post_time, :find_user_name
+
+  private
+
+  def find_user_name(id)
+    User.find(id).first_name.capitalize.+(" #{User.find(id).last_name.chars.first.capitalize}.")
+  end 
+
+  def require_user
+    unless current_user
+      flash[:notice] = "You must be logged in to access this page"
+      redirect_to new_user_session_path
+      return false
+    end
+  end
+
+  def require_user_admin
+    unless current_user.admin
+      flash[:notice] = "You must be logged in as admin to access this page"
+      redirect_to new_user_session_path
+      return false
+    end
+  end
 
   def display_post_time(time_at_post)
     time_diffrences = Time.now() - time_at_post
@@ -20,7 +42,6 @@ class ApplicationController < ActionController::Base
 
   end
 
-  private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find

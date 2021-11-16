@@ -1,3 +1,12 @@
-<%= render 'form', post: @post %>
+<div class="col-md-6">
+  <div class="mx-5 my-3">
+    <div>
+      <%= link_to :back, class:"fs-6 link-dark text-decoration-none" do %>
+        <i class="bi bi-arrow-left"></i>
+        Back
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Back', root_path %>
+<%= render 'form', post: @post, page: 'new' %>
