@@ -30,12 +30,12 @@ class CommentsController < ApplicationController
         format.html { redirect_to root_url, notice: "Comment was successfully created." }
        # format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity } # redirect_to new_comment_path(post_id: @comment.post_id)
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
-
+  
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
     respond_to do |format|
