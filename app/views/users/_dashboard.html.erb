@@ -1,57 +1,40 @@
 <p id="notice"><%= notice %></p>
-<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-  <div class="card p-6">
-    <div class="d-flex flex-row justify-content-center align-items-center"><%= @user.first_name %> <%= @user.last_name %></div>
-      <div class="image d-flex flex-column justify-content-center align-items-center">
+
+<div class="container-mb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <h2 class="d-flex fw-bold px-5 flex-row justify-content-center align-items-center"><%= @user.first_name %> <%= @user.last_name %></h2>
+        <div class="image d-flex flex-column justify-content-center align-items-center">
         <% if @user.avatar.attached? %>
         <%= image_tag(@user.avatar, height:"200px", class:"rounded-circle") %>
         <% else %>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" style="height: 200px;">
         <% end %>
         <span class="idd"><%= @user.email %></span>
-        <div class=" d-flex mt-2"><%= link_to 'Edit Profile', edit_user_path(@user) %></div>
+        <h6 class=" d-flex mt-2"><%= link_to 'Edit Profile', edit_user_path(@user) %></h6>
+        </div>
       </div>
-        <h5 class="mb-3">Recent posts</h5>
-          <div class="p-4 bg-light rounded shadow-sm">
-            <p class="font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-            <ul class="list-inline small text-muted mt-3 mb-0">
-            <li class="list-inline-item"><i class="fa fa-comment-o mr-2"></i>12 Comments</li>
-            <li class="list-inline-item"><i class="fa fa-heart-o mr-2"></i>200 Likes</li>
-            </ul>
-
-        
-      <% @user_posts.reverse_each do |post| %>
-      <div class="card mb-3">
-        <div class="d-flex justify-content-between p-2 px-3">
-          <div class="d-flex flex-row mt-1 text-muted">
-            <small class="pe-2"><time><%= display_post_time(post.created_at) %></time></small>
-            <i class="bi bi-three-dots"></i>
-          </div>
-        </div>
-        <%= image_tag(post.image, class:"card-img") if post.image.attached? %>
-          <p class="card-text"><%= post.content %></p>
-
-        </div>
-        <% end %>
-
-      <% @user_comments.reverse_each do |comment| %>
-      <div class="card mb-3">
-        <div class="d-flex justify-content-between p-2 px-3">
-          <div class="d-flex flex-row mt-1 text-muted">
-            <small class="pe-2"><time><%= display_post_time(comment.created_at) %></time></small>
-            <i class="bi bi-three-dots"></i>
-          </div>
-        </div>
-    
-          <p class="card-text"><%= comment.content %></p>
-          <p>Comment for Post</p>
-          <p class="card-text"><%= find_post_for_comment(comment.post_id) %></p>
-
-        </div>
-        <% end %>
-
-
-      </div>
+    </div>
   </div>
+
+  <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-md-6">
+        <h5 class="mb-3">Recent posts</h5>
+        <% @user_posts.reverse_each do |post| %>
+          <div class="card mb-3">
+            <div class="d-flex justify-content-between p-2 px-3">
+              <div class="d-flex flex-row align-items-center mt-1 text-muted">
+                <small class="pe-2"><time><%= display_post_time(post.created_at) %></time></small>
+                <i class="bi bi-three-dots"></i>
+              </div>
+            </div>
+            <%= image_tag(post.image, class:"card-img") if post.image.attached? %>
+            <p class="card-text"><%= post.content %></p>
+          </div>
+           <% end %>
+      </div>
+    </div>
+  </div>
+  <%= link_to "Back", root_path, class: "btn btn-outline-primary me-2" %>
 </div>
-<%= link_to "Back", root_path, class: "btn btn-outline-primary me-2" %>
