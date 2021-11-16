@@ -5,19 +5,14 @@ RSpec.describe 'Comment', type: :system do
   describe 'Edit Comment' do
     it 'allows user to edit post content' do
       login
-      visit '/posts/9/edit'
-      fill_in(:post_content, with: 'This is my changed post content!')
+      create_post_with_img
+      click_link 'Home'
+      create_comment
+      visit '/comments/1/edit'
+      fill_in(:comment_content, with: 'This is my changed comment content!')
       click_button
-      expect(page).to have_content 'This is my changed post content!'
-    end
-  end
-  describe 'Edit Comment' do
-    it 'allows user to edit post image' do
-      login
-      visit '/posts/9/edit'
-      attach_file('post_image', Rails.root + 'spec/test_image.png')
-      click_button
-      expect(page).to have_content 'This is my changed post content!'
+      expect(page).to have_content 'This is my changed comment content!'
+      expect(page).to have_content 'Comment was successfully updated.'
     end
   end
 end

@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    @post_id = @comment.post_id
   end
 
   # POST /comments or /comments.json
