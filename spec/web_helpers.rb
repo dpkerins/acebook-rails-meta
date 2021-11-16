@@ -24,7 +24,7 @@ def create_post_with_img
 end
 
 def create_comment
-  click_link('Add Comment')
-  fill_in(:comment_content, with: 'This is a test comment!')
-  click_button
+  click_link 'Add Comment'
+  fill_in(:comment_content, with: 'This is a test comment')
+  click_button('Comment')
 end
