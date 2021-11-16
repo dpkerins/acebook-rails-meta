@@ -14,3 +14,11 @@ def login
   fill_in(:exampleInputPassword1, with: '12345678')
   click_button
 end
+
+def create_post_with_img
+  visit root_path
+  click_link 'New Post'
+  fill_in(:post_content, with: 'This is a test post!')
+  attach_file('post_image', Rails.root + 'spec/test_image.png')
+  click_button
+end
