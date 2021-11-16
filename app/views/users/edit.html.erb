@@ -1,6 +1,12 @@
-<h1>Editing User</h1>
+<div class="col-md-6">
+  <div class="mx-5 my-3">
+    <div>
+      <%= link_to users_path, class:"fs-6 link-dark text-decoration-none" do %>
+        <i class="bi bi-arrow-left"></i>
+        Back
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= render 'form', user: @user, page: 'edit' %>

@@ -1,3 +1,13 @@
-<%= render 'form', user: @user %>
+<div class="col-md-6">
+  <div class="mx-5 my-3">
+    <div>
+      <%= link_to users_path, class:"fs-6 link-dark text-decoration-none" do %>
+        <i class="bi bi-arrow-left"></i>
+        Back
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Back', users_path %>
+<%= render 'form', user: @user, page: 'new' %>
+
