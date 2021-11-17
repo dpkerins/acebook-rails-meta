@@ -35,6 +35,13 @@
           <%= form.label :email, for:"floatingEmail" %>
         </div>
 
+        <% if page == "edit" %>
+        <div class="form-floating mb-3">
+          <%= form.password_field :old_password, class:"form-control", id:"floatingPassword", placeholder:"Password" %>
+          <%= form.label :old_password, for:"floatingPassword" %>
+        </div>
+        <% end %>
+
         <div class="form-floating mb-3">
           <%= form.password_field :password, class:"form-control", id:"floatingPassword", placeholder:"Password" %>
           <%= form.label :password, for:"floatingPassword" %>
