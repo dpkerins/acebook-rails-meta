@@ -1,8 +1,13 @@
 <div class="col-md-8">
   <% if current_user %>
-    <%= link_to '+ New Post', new_post_path, class:"btn btn-primary w-100 mb-3 link-light text-decoration-none" %>
+    <%= link_to '+ New Post', new_post_path, class:"btn btn-primary w-100 link-light text-decoration-none" %>
   <% else %>
-    <%= link_to '+ New Post', new_user_path, class:"btn btn-primary w-100 mb-3 link-light text-decoration-none" %>
+    <%= link_to '+ New Post', new_user_path, class:"btn btn-primary w-100 link-light text-decoration-none" %>
   <% end %>
 </div>
-<%= render 'posts_with_comments' %>
+
+<% @posts.reverse_each do |post| %>
+  <div class="col-md-8"><!--Sets card width-->
+    <%= render 'posts/post', post: post %>
+  </div>
+<% end %>
