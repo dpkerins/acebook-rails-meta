@@ -6,7 +6,7 @@ RSpec.describe 'Post', type: :system do
     it 'allows user to edit post content' do
       login
       create_post_with_img
-      click_link 'Home'
+      click_link 'metabook'
       create_comment
       visit '/posts/1/edit'
       fill_in(:post_content, with: 'This is my changed post content!')

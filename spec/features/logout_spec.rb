@@ -5,7 +5,7 @@ RSpec.describe 'User', type: :system do
   describe 'Logout' do
     it 'user to log out' do
       login
-      click_link 'Log out'
+      logout
 
       expect(page).to_not have_content 'Welcome Mary!'
       expect(page).to have_link('Login')
