@@ -50,10 +50,6 @@
           <%= form.file_field :avatar, class:"form-control" %>
         </div>
 
-          <%= form.hidden_field :active, value: true %>
-          <%= form.hidden_field :approved, value: true %>
-          <%= form.hidden_field :confirmed, value: true %>
-
         <div class="actions">
         <% if page == 'edit' %>
           <%= form.submit "Update", class:"btn btn-primary" %>

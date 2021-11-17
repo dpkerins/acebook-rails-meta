@@ -8,7 +8,7 @@ fake_users = [
 ]
 
 fake_users.each do | email, password, password_confirmation, first_name, last_name |
-  User.create( email: email, password: password, password_confirmation: password_confirmation, first_name: first_name, last_name: last_name, admin: false, active: true, approved: true, confirmed: true, avatar: nil)
+  User.create( email: email, password: password, password_confirmation: password_confirmation, first_name: first_name, last_name: last_name, admin: false, avatar: nil)
   .avatar.attach(io: File.open(Rails.root.join("app/assets/images/#{first_name}.jpg")), filename: "#{first_name}.jpg")
 end
 
