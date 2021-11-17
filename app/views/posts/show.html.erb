@@ -10,10 +10,15 @@
   <%= @post.likes %>
 </p>
 
-<p>
+<!-- <p>
   <strong>User:</strong>
   <%= @post.user_id %>
-</p>
+</p>>-->
 
+<% if current_user %>
+<% if current_user.id == @post.user_id %>
 <%= link_to 'Edit', edit_post_path(@post) %> |
+<% end %>
+<% end %>
+
 <%= link_to 'Back', root_path %>
