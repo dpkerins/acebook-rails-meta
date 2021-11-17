@@ -1,6 +1,7 @@
 <div class="row justify-content-center">
-    <div class="col-md-8">
-      <%= form_with(model: comment) do |form| %>
+  <div class="col-md-8">
+  
+        <%= form_with(model: comment) do |form| %>
         <% if comment.errors.any? %>
           <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
             <h3>Oops!</h3>
@@ -12,10 +13,7 @@
             </ul>
           </div>
         <% end %>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
+
       <div class="shadow p-4 bg-white rounded-3 ">
         <legend>
         <% if page == 'edit' %>
@@ -44,6 +42,7 @@
         <% end %>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+
