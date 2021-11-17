@@ -50,11 +50,6 @@ ActiveRecord::Schema.define(version: 2021_11_15_122241) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "post_images", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.integer "likes"
@@ -65,11 +60,6 @@ ActiveRecord::Schema.define(version: 2021_11_15_122241) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "user_avatars", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "crypted_password"
@@ -78,8 +68,6 @@ ActiveRecord::Schema.define(version: 2021_11_15_122241) do
     t.string "last_name"
     t.boolean "admin"
     t.string "persistence_token"
-    t.string "single_access_token"
-    t.string "perishable_token"
     t.integer "login_count", default: 0, null: false
     t.integer "failed_login_count", default: 0, null: false
     t.datetime "last_request_at"
@@ -87,15 +75,10 @@ ActiveRecord::Schema.define(version: 2021_11_15_122241) do
     t.datetime "last_login_at"
     t.string "current_login_ip"
     t.string "last_login_ip"
-    t.boolean "active", default: false
-    t.boolean "approved", default: false
-    t.boolean "confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["perishable_token"], name: "index_users_on_perishable_token", unique: true
     t.index ["persistence_token"], name: "index_users_on_persistence_token", unique: true
-    t.index ["single_access_token"], name: "index_users_on_single_access_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

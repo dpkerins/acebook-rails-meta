@@ -50,15 +50,6 @@
           <%= form.file_field :avatar, class:"form-control" %>
         </div>
 
-        <div class="mb-3 form-check">
-          <%= form.check_box :admin, class:"form-check-input", id:"adminCheck" %>
-          <%= form.label :admin, class:"form-check-label", for:"adminCheck" %>
-        </div>
-
-          <%= form.hidden_field :active, value: true %>
-          <%= form.hidden_field :approved, value: true %>
-          <%= form.hidden_field :confirmed, value: true %>
-
         <div class="actions">
         <% if page == 'edit' %>
           <%= form.submit "Update", class:"btn btn-primary" %>
