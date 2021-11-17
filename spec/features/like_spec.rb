@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'web_helpers'
 
-RSpec.describe 'Post', type: :system do
+RSpec.describe 'Like', type: :system do
   describe 'Liking a Post' do
     before(:each) do
       login
