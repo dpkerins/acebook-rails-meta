@@ -5,10 +5,12 @@ class CommentsController < ApplicationController
   # GET /comments or /comments.json
   def index
     @comments = Comment.all
+    redirect_to root_path
   end
 
   # GET /comments/1 or /comments/1.json
   def show
+    redirect_to root_path
   end
 
   # GET /comments/new
