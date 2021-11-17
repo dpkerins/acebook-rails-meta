@@ -8,15 +8,18 @@ RSpec.describe 'Comment', type: :system do
         login
         create_post_with_img
         visit root_path
-        create_comment
       end
       it 'allows user to create a new comment' do
+        create_comment
         expect(page).to have_content 'Comment was successfully created.'
         expect(page).to have_content 'This is a test comment'
       end
 
       it 'displays error message if no text added' do
-        expect(page).to have_content 'Invalid context'
+        click_link 'Add Comment'
+        click_button('Comment')
+        expect(page).to have_content 'Content cannot be empty'
+        expect(page).not_to have_content 'Comment was successfully created.'
       end
     end
 
