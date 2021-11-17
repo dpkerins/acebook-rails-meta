@@ -11,7 +11,17 @@ RSpec.describe 'Post', type: :system do
     end
 
     context 'when logged in' do
-      
+      it 'should allow a logged in user to like a post' do
+        find("a", :text => "like", match: :first).click
+        expect(page).to have_content 'Like was successfully updated.'
+        expect(page).to have_link('1 likes')
+      end
+      it 'should not allow user to like a post more than once' do
+        find("a", :text => "like", match: :first).click
+        find("a", :text => "like", match: :first).click
+        expect(page).to have_content 'You already liked the post'
+        expect(page).to have_link('1 likes')
+      end
     end
 
     context 'when not logged in' do
