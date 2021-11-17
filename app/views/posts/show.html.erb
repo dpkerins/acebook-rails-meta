@@ -1,24 +1,9 @@
-<%= image_tag @post.image if @post.image.attached? %>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>Likes:</strong>
-  <%= @post.likes %>
-</p>
-
-<!-- <p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>>-->
-
-<% if current_user %>
-<% if current_user.id == @post.user_id %>
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<% end %>
-<% end %>
-
-<%= link_to 'Back', root_path %>
+<div class="col-md-12"><!--Sets card width-->
+  <div>
+    <%= link_to :back, class:"fs-6 link-dark text-decoration-none" do %>
+      <i class="bi bi-arrow-left"></i>
+      Back
+    <% end %>
+  </div>
+  <%= render 'post', post: @post %>
+</div>

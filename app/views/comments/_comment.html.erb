@@ -1,0 +1,21 @@
+<hr>
+<div class="d-flex flex-row mb-2">
+  <%= link_to user_path(comment.user_id) do %>
+    <%= avatar_for(comment.user_id) %>
+  <% end %>
+  <div class="d-flex flex-column ml-2 mx-2">
+    <%= link_to user_path(comment.user_id), class:"text-decoration-none link-dark" do %>
+      <span><%= find_user_name(comment.user_id) %></span>
+    <% end %>
+    <small class="comment-text fw-light"><%= comment.content %></small>
+      <div class="d-flex flex-row align-items-center pt-1">
+      <% if current_user %>
+      <% if current_user.id == comment.user_id %>
+        <small class="pe-1"><%= link_to 'Edit', edit_comment_path(comment), class:"text-muted" %></small>
+        <small class="pe-1"><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-muted" %></small>
+      <% end %>
+      <% end %>
+      <small class="pe-1 fw-light text-muted"><time><%= display_post_time(comment.created_at) %></time></small>
+      </div>
+  </div>
+</div>
