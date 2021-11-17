@@ -1,8 +1,8 @@
 module UsersHelper
 
-    def find_post_for_comment(id)
-        Post.find(id).content
-    end
+  def find_post_for_comment(id)
+    post = Post.find(id)
+  end
 
   def avatar_for(id)
     user = User.find(id).avatar

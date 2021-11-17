@@ -1,40 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<div class="container-mb-5">
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-6">
-      <h2 class="d-flex fw-bold px-5 flex-row justify-content-center align-items-center"><%= @user.first_name %> <%= @user.last_name %></h2>
-        <div class="image d-flex flex-column justify-content-center align-items-center">
+<div class="row">
+  <div class="col-md-4"><!--User Overview-->
+    <h2 class="d-flex fw-bold px-5 flex-row justify-content-center align-items-center"><%= @user.first_name %> <%= @user.last_name %></h2>
+      <div class="image d-flex flex-column justify-content-center align-items-center">
         <% if @user.avatar.attached? %>
-        <%= image_tag(@user.avatar, height:"200px", class:"rounded-circle") %>
+          <%= image_tag(@user.avatar, height:"200px", class:"rounded-circle") %>
         <% else %>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" style="height: 200px;">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" style="height: 200px;">
         <% end %>
-        <span class="idd"><%= @user.email %></span>
+        <span class="id"><%= @user.email %></span>
         <h6 class=" d-flex mt-2"><%= link_to 'Edit Profile', edit_user_path(@user) %></h6>
+      </div>
+  </div>
+  <div class="col-md-8"><!--Recent posts and comments-->
+    <h5 class="mb-3">Recent posts</h5>
+    <% @user_posts.reverse_each do |post| %>
+      <%= render 'posts/post', post: post %>
+    <% end %>
+    <h5 class="m-3">Recent comments</h5>
+    <% @user_comments.reverse_each do |comment| %>
+      <div class="card mt-3">
+        <div class="d-flex justify-content-between py-2 px-3">
+          <%= render 'comments/comment', comment: comment %>
         </div>
+        <%= find_post_for_comment(comment.post_id) do |post| %>
+          <% post %>
+          <% link_to 'Show original post', show_post_path(post) %>
+          <% link_to "Show post", controller: "posts", action: "show", id: post %>
+        <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
-
-  <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-    <div class="row d-flex align-items-center justify-content-center">
-      <div class="col-md-6">
-        <h5 class="mb-3">Recent posts</h5>
-        <% @user_posts.reverse_each do |post| %>
-          <div class="card mb-3">
-            <div class="d-flex justify-content-between p-2 px-3">
-              <div class="d-flex flex-row align-items-center mt-1 text-muted">
-                <small class="pe-2"><time><%= display_post_time(post.created_at) %></time></small>
-                <i class="bi bi-three-dots"></i>
-              </div>
-            </div>
-            <%= image_tag(post.image, class:"card-img") if post.image.attached? %>
-            <p class="card-text"><%= post.content %></p>
-          </div>
-           <% end %>
-      </div>
-    </div>
-  </div>
-  <%= link_to "Back", root_path, class: "btn btn-outline-primary me-2" %>
 </div>

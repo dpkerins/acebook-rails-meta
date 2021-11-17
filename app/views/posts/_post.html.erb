@@ -57,6 +57,7 @@
     </div>
     <!--Post comments-->
     <% post.comments.reverse_each do |comment| %>
+      <hr>
       <%= render 'comments/comment', comment: comment %>
     <% end %>
   </div>
