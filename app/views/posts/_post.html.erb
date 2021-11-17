@@ -45,9 +45,9 @@
     <!--Post like button/comment count-->
     <div class="d-flex justify-content-between align-items-center">
       <% if current_user %>
-        <%= link_to like_path(post_id: post.id), method: :post, class:"btn btn-primary btn-sm" do %>
-          <i class="bi bi-hand-thumbs-up"></i> <%= post.likes %> likes
-        <% end %>
+          <div id = "like-<%= post.id %>">
+            <%= render 'home/like', post: post %>
+          </div>
       <% else %>
         <%= link_to new_user_path, class:"btn btn-primary btn-sm" do %>
           <i class="bi bi-hand-thumbs-up"></i> <%= post.likes %> likes

@@ -1,0 +1,9 @@
+   <% unless already_liked ||= false %>
+    <%= link_to like_path(post_id: post.id), remote: true, method: :post, class:"btn btn-primary btn-sm" do %>
+        <i class="bi bi-hand-thumbs-up"></i> <%= post.likes %> likes
+    <% end %>
+   <% else %>
+    <%= link_to like_path(post_id: post.id), remote: true, method: :post, class:"btn btn-secondary btn-sm" do %>
+        <i class="bi bi-hand-thumbs-up"></i> <%= post.likes %> Already liked
+    <% end %>
+   <% end %>
