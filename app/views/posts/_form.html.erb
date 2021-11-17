@@ -1,15 +1,19 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= form_with(model: post) do |form| %>
+        <% if post.errors.any? %>
+          <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h2>Oops!</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <ul>
+              <% post.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+     </div>
+  </div>
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="shadow p-4 bg-white rounded-3 ">

@@ -1,15 +1,19 @@
-<%= form_for @user_session, url: user_sessions_url do |f| %>
-  <% if @user_session.errors.any? %>
-  <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
-    <h2><%= pluralize(@user_session.errors.count, "error") %> prohibited:</h2>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <ul>
-      <% @user_session.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= form_for @user_session, url: user_sessions_url do |f| %>
+        <% if @user_session.errors.any? %>
+          <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h3>Oops!</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <ul>
+              <% @user_session.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+    </div>
   </div>
-  <% end %>
 
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -31,3 +35,5 @@
     </div>
   </div>
 <% end %>
+
+
