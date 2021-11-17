@@ -35,7 +35,7 @@ RSpec.describe 'Post', type: :system do
     end
 
     context 'when not picture is added to post' do
-      xit 'displays error message if no text added' do
+      it 'displays error message if no text added' do
         login
         click_link 'New Post'
         click_button

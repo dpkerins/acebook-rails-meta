@@ -6,7 +6,7 @@ RSpec.describe 'Comment', type: :system do
     it 'allows user to edit comment content' do
       login
       create_post_with_img
-      click_link 'Home'
+      click_link 'metabook'
       create_comment
       visit '/comments/1/edit'
       fill_in(:comment_content, with: 'This is my changed comment content!')

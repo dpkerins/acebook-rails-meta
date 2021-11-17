@@ -17,7 +17,7 @@ RSpec.describe 'Post', type: :system do
     context 'when not logged in' do
       before(:each) do
         visit root_path
-        click_link 'Log out'
+        logout
       end
       
       it 'should not allow a user to like a post if not logged in' do

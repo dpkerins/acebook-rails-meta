@@ -10,8 +10,8 @@ def login
 
   visit root_path
   click_link 'Login'
-  fill_in(:exampleInputEmail1, with: 'm@p.com')
-  fill_in(:exampleInputPassword1, with: '12345678')
+  fill_in(:user_session_email, with: 'm@p.com')
+  fill_in(:user_session_password, with: '12345678')
   click_button
 end
 
@@ -27,4 +27,9 @@ def create_comment
   click_link 'Add Comment'
   fill_in(:comment_content, with: 'This is a test comment')
   click_button('Comment')
+end
+
+def logout
+  find("#dropdownUser1").click
+  click_link "Log out"
 end
