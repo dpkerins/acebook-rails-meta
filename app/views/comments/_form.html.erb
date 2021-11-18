@@ -11,9 +11,13 @@
     </div>
   <% end %>
   <div class="row justify-content-center">
+    <% if page == 'home' %>
+    <div>
+    <% else %>  
     <div class="col-md-8">
+    <% end %>
       <div class="shadow p-4 bg-white rounded-3 ">
-        <legend>
+        <legend>  
         <% if page == 'edit' %>
           Edit comment
         <% else %>
@@ -21,7 +25,7 @@
         <% end %>
         </legend>
         <div class="form-floating" style="height: 125px;">
-          <%= form.text_area :content, class:"form-control form-control-lg p-1 h-100" %>
+          <%= form.text_area :content, class:"form-control form-control-lg p-1 h-100"%>
         </div>
 
         <div class="field">
