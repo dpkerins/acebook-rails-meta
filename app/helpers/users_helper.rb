@@ -7,18 +7,9 @@ module UsersHelper
   def avatar_for(id)
     user = User.find(id).avatar
     if user.attached?
-      image_tag(user, class:"rounded-circle", alt:"avatar", style:"object-fit:cover; height:50px; width:50px;")
+      user
     else
-      image_tag("avatar_placeholder.png", class:"rounded-circle", alt:"avatar", style:"object-fit:cover; height:50px; width:50px;")
-    end
-  end
-
-  def big_avatar_for(id)
-    user = User.find(id).avatar
-    if user.attached?
-      image_tag(user, class:"rounded-circle", alt:"avatar", style:"object-fit:cover; height:200px; width:200px;")
-    else
-      image_tag("avatar_placeholder.png", class:"rounded-circle", alt:"avatar", style:"object-fit:cover; height:200px; width:200px;")
+      "avatar_placeholder.png"
     end
   end
 
