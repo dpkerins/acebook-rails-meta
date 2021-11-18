@@ -1,0 +1,29 @@
+
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
+      <h2>Oops!</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+  <div class="card">
+    <div class="input-group p-3 pb-2">
+      <%= form.text_area :content, class:"form-control", placeholder:"What's on your mind?" %>
+      <%= form.hidden_field :likes, value: 0 %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    </div>
+    <div class="d-flex flex-row-reverse align-items-center px-3 pb-3">
+      <%= form.submit "Post", class:"btn btn-primary btn-sm", id:"new-post-button" %>
+      <label class="btn btn-outline-secondary btn-sm me-2">
+        <i class="bi bi-image"></i>
+        Photo
+        <%= form.file_field :image, hidden:"" %>
+      </label>
+    </div>
+  </div>
+<% end %>
