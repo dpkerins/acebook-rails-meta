@@ -7,6 +7,6 @@
   </div>
 </nav>
 <% unless current_user %>
-  <%= render 'users/log_in_modal', user: @user %>
-  <%= render 'users/sign_up_modal', user: @user %>
+  <%= render 'users/log_in_modal' %>
+  <%= render 'users/sign_up_modal', user: new_user %>
 <% end %>
