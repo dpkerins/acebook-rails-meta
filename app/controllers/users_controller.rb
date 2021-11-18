@@ -1,22 +1,17 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ profile show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy ]
   before_action :require_user, :except => [:new, :create]
-  before_action :require_user_admin, :except => [:new, :create, :show, :edit, :update, :profile]
+  before_action :require_user_admin, :except => [:new, :create, :show, :edit, :update]
 
   # GET /users or /users.json
   def index
     @users = User.all
   end
 
-  def profile
-    user = User.find(current_user.id)
-    @user_posts = user.posts
-    @user_comments = user.comments
-  end
-
   # GET /users/1 or /users/1.json
   def show
     @posts = Post.where(user_id: @user)
+    @comments = Comment.where(user_id: @user)
   end
 
   # GET /users/new
