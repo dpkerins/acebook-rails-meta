@@ -1,0 +1,11 @@
+console.log("this is working");
+
+commentContainer = document.getElementById("comment-container-<%= @post_id %>");
+
+newComment = document.createElement('div');
+
+newComment.class = '.mb-2'
+
+newComment.innerHTML = "<%= j render('comment', comment: @comment) %>";
+
+commentContainer.prepend(newComment);
