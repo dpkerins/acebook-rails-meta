@@ -1,0 +1,3 @@
+like = document.getElementById("like-<%= @like.id %>")
+like.innerHTML = "<%= j render 'like', post: @like, already_liked: @already_liked %>"
+
