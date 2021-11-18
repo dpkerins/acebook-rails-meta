@@ -2,6 +2,6 @@ commentContainer = document.getElementById("comment-container-<%= @post_id %>");
 commentTextArea = commentContainer.parentElement.querySelector("#comment_content");
 newComment = document.createElement('div');
 newComment.class = '.mb-2'
-newComment.innerHTML = "<%= j render('comment', comment: @comment) %>";
+newComment.innerHTML = "<hr><%= j render('comment', comment: @comment) %>";
 commentContainer.prepend(newComment);
 commentTextArea.value = '';

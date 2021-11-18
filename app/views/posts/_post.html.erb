@@ -59,8 +59,9 @@
       <%= render 'comments/jsform', comment: @comment, page: 'home', post_id: post.id %>
     <% end %>
     <!--Post comments-->
-    <div class="pt-1" id="comment-container-<%= post.id %>">
+    <div id="comment-container-<%= post.id %>">
       <% post.comments.reverse_each do |comment| %>
+        <hr>
         <%= render 'comments/comment', comment: comment %>
       <% end %>
     </div>
