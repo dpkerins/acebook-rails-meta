@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-between py-2 px-3">
     <div class="d-flex flex-row align-items-center">
       <%= link_to user_path(post.user_id) do %>
-        <%= avatar_for(post.user_id) %>
+        <%= image_tag(avatar_for(post.user_id), class:"rounded-circle", alt:"avatar", style:"object-fit:cover; height:50px; width:50px;") %>
       <% end %>
       <div class="d-flex flex-column ml-2">
         <%= link_to user_path(post.user_id), class:"fw-bold ms-2 text-decoration-none link-dark" do %>
@@ -44,9 +44,9 @@
     <!--Post like button/comment count-->
     <div class="d-flex justify-content-between align-items-center">
       <% if current_user %>
-        <%= link_to like_path(post_id: post.id), method: :post, class:"btn btn-primary btn-sm" do %>
-          <i class="bi bi-hand-thumbs-up"></i> <%= post.likes %> likes
-        <% end %>
+          <div id = "like-<%= post.id %>">
+            <%= render 'home/like', post: post %>
+          </div>
       <% else %>
         <%= link_to new_user_path, class:"btn btn-primary btn-sm" do %>
           <i class="bi bi-hand-thumbs-up"></i> <%= post.likes %> likes

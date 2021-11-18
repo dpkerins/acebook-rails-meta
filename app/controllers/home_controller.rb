@@ -15,11 +15,14 @@ class HomeController < ApplicationController
         number = @like.likes + 1
         if @like.update(likes: number, liked_by: liked_by)
           format.html { redirect_to root_url, notice: "Like was successfully updated." }
+          format.js
         else
           format.html { redirect_to root_url, notice: "Like was unsuccessful." }
         end
       else
         format.html { redirect_to root_url, notice: "You already liked the post" }
+        format.js
+        @already_liked = true
       end
     end
   end

@@ -6,10 +6,10 @@
       <div class="dropdown text-end px-2">
         <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown">
           <span class="pe-2">Welcome <%= current_user.first_name %>!</span>
-          <%= avatar_for(current_user.id) %>
+          <%= image_tag(avatar_for(current_user.id), class:"rounded-circle", alt:"avatar", style:"object-fit:cover; height:50px; width:50px;") %>
         </a>
         <ul class="dropdown-menu dropdown-menu-end text-small">
-          <li><%= link_to "Profile", user_dashboard_path(current_user), method: :get, class:"dropdown-item" %></li>
+          <li><%= link_to "Profile", user_path(current_user), method: :get, class:"dropdown-item" %></li>
           <li><hr class="dropdown-divider"></li>
           <li><%= link_to "Log out", current_user_session, method: :delete, class:"dropdown-item" %></li>
         </ul>
