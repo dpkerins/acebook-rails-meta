@@ -1,0 +1,67 @@
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+					<h5 class="modal-title" id="signupModalLabel">Sign up</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+					<%= form_with(model: user, local: false) do |form| %>
+					<% if user.errors.any? %>
+						<div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
+							<h3>Oops!</h3>
+								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+									<ul>
+										<% user.errors.each do |error| %>
+											<li><%= error.full_message %></li>
+											<% end %>
+										</ul>
+									</div>
+					<% end %>
+
+					<div class="shadow p-4 bg-white rounded-3 ">
+						<legend>
+							Create your account
+						</legend>
+						<div class="form-floating mb-3">
+							<%= form.text_field :first_name, class:"form-control", id:"floatingFirstName", placeholder:"First Name" %>
+							<%= form.label :first_name, for:"floatingFirstName" %>
+						</div>
+
+						<div class="form-floating mb-3">
+							<%= form.text_field :last_name, class:"form-control", id:"floatingLastName", placeholder:"Last Name" %>
+							<%= form.label :last_name, for:"floatingLastName" %>
+						</div>
+
+						<div class="form-floating mb-3">
+							<%= form.email_field :email, class:"form-control", id:"floatingEmail", placeholder:"Email" %>
+							<%= form.label :email, for:"floatingEmail" %>
+						</div>
+
+						<div class="form-floating mb-3">
+							<%= form.password_field :password, class:"form-control", id:"floatingPassword", placeholder:"Password" %>
+							<%= form.label :password, for:"floatingPassword" %>
+						</div>
+
+						<div class="form-floating mb-3">
+							<%= form.password_field :password_confirmation, class:"form-control", id:"floatingPasswordConfirmation", placeholder:"Confirm Password" %>
+							<%= form.label :password_confirmation, for:"floatingPasswordConfirmation" %>
+						</div>
+
+						<div class="mb-3">
+							<%= form.label "Upload profile picture", class:"form-label" %>
+							<%= form.file_field :avatar, class:"form-control" %>
+						</div>
+
+						<div class="modal-footer">
+							<div class="actions">
+								<button type="button" id="close_modal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								<%= form.submit "Sign-up", class:"btn btn-primary" %>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

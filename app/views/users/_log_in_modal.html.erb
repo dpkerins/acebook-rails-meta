@@ -1,0 +1,50 @@
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+					<h5 class="modal-title" id="logginModalLabel">Log in</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				 <%= form_for @user_session, url: user_sessions_url, remote: true do |f| %>
+          <% if @user_session.errors.any? %>
+            <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
+              <h3>Oops!</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <ul>
+                <% @user_session.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+        <div class="shadow p-4 bg-white rounded-3 ">
+            <legend>
+							Welcome back
+						</legend>
+          <div class="form-floating mb-3">
+            <%= f.email_field :email, class:"form-control", id:"floatingEmail_login", placeholder:"Email address" %>
+            <%= f.label :email, for:"floatingEmail_login" %>
+          </div>
+          <div class="form-floating mb-3">
+            <%= f.password_field :password, class:"form-control", id:"floatingPassword_login", placeholder:"Password" %>
+            <%= f.label :password, for:"floatingPassword_login" %>
+          </div>
+
+        	<div class="modal-footer">
+							<div class="actions">
+								<button type="button" id="close_modal_login" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								<%= f.submit "Login", class:"btn btn-primary btn-block fw-bold" %>
+                </div>
+                <div class="text-center">
+                  <small>New to Metabook?<button type="button" class="btn btn-link btn-sm" data-bs-toggle="modal" data-bs-target="#signupModal">Create an account</button></small>
+                </div>
+							</div>
+						</div>
+					</div>
+      <% end %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -4,6 +4,8 @@ class HomeController < ApplicationController
 
   def index
     @posts = Post.all
+    @user = User.new
+    @user_session = UserSession.new
   end
 
   def like
