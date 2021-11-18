@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @post = Post.new
     @comment = Comment.new
   end
 
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @comment = Comment.new
 
     respond_to do |format|
       if @post.save

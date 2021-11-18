@@ -1,7 +1,5 @@
-postContainer = document.getElementById("post-container-<%= @post_id %>");
-postTextArea = postContainer.parentElement.querySelector("#post_content");
+newPostForm = document.getElementById("new-post-form");
 newPost = document.createElement('div');
 newPost.class = '.mb-2'
 newPost.innerHTML = "<%= j render('post', post: @post) %>";
-postContainer.prepend(newPost);
-postTextArea.value = '';
+newPostForm.append(newPost);
