@@ -6,7 +6,7 @@
       <div class="dropdown text-end px-2">
         <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown">
           <span class="pe-2">Welcome <%= current_user.first_name %>!</span>
-          <%= image_tag(avatar_for(current_user.id), class:"rounded-circle", alt:"avatar", style:"object-fit:cover; height:50px; width:50px;") %>
+          <%= image_tag(avatar_for(current_user.id), class:"rounded-circle", alt:"avatar", style:"object-fit:cover; height:40px; width:40px;") %>
         </a>
         <ul class="dropdown-menu dropdown-menu-end text-small">
           <li><%= link_to "Profile", user_path(current_user), method: :get, class:"dropdown-item" %></li>
