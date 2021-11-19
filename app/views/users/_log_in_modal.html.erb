@@ -4,13 +4,13 @@
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body">
-    <%= form_for @user_session, url: user_sessions_url, remote: true do |f| %>
-    <% if @user_session.errors.any? %>
+    <%= form_for user_session, url: user_sessions_url, remote: true do |f| %>
+    <% if user_session.errors.any? %>
       <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
         <h3>Oops!</h3>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <ul>
-          <% @user_session.errors.full_messages.each do |msg| %>
+          <% user_session.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
           <% end %>
         </ul>

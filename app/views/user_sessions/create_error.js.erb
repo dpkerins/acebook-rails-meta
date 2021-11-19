@@ -1,2 +1,2 @@
 login = document.getElementById("content_login")
-login.innerHTML = "<%= j render 'users/log_in_modal' %>"
+login.innerHTML = "<%= j render 'users/log_in_modal', user_session: @user_session %>"
