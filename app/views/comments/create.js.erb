@@ -5,3 +5,7 @@ newComment.class = '.mb-2'
 newComment.innerHTML = "<hr><%= j render('comment', comment: @comment) %>";
 commentContainer.prepend(newComment);
 commentTextArea.value = '';
+
+commentNumber = commentContainer.parentElement.querySelector("#comment-number");
+newCommentNumber = parseInt(commentNumber.innerHTML) + 1;
+commentNumber.innerHTML = newCommentNumber + ' comments';
