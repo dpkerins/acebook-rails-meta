@@ -5,11 +5,6 @@ class UserSessionsController < ApplicationController
 
   def create
     @user_session = UserSession.new(user_session_params.to_h)
-    # if @user_session.save
-    #   redirect_to root_path
-    # else
-    #   render :action => :new
-    # end
     respond_to do |format|
       if @user_session.save
         format.html { redirect_to root_url, notice: "Log in successful" }
