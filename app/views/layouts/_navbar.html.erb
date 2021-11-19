@@ -7,6 +7,19 @@
   </div>
 </nav>
 <% unless current_user %>
-  <%= render 'users/log_in_modal' %>
-  <%= render 'users/sign_up_modal', user: new_user %>
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" id = "content_login">
+        <%= render 'users/log_in_modal' %>
+      </div>
+	  </div>
+  </div>
+
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+		  <div class="modal-content" id = "content_signup">
+        <%= render 'users/sign_up_modal', user: new_user %>
+  		</div>
+	  </div>
+  </div>
 <% end %>

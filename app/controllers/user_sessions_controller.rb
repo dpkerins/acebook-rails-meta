@@ -17,7 +17,7 @@ class UserSessionsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
-        format.js { render partial: 'users/log_in_modal', user: @user, status: :unprocessable_entity }
+        format.js { render :create_error, status: :unprocessable_entity  }
       end
     end
   end
