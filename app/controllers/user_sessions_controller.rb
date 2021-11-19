@@ -7,6 +7,10 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(user_session_params.to_h)
     respond_to do |format|
       if @user_session.save
+        @post = Post.new
+        @posts = Post.all
+        @comments = Comment.all
+        @comment = Comment.new
         format.html { redirect_to root_url, notice: "Log in successful" }
         format.js
       else

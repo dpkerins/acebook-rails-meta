@@ -29,6 +29,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+        @post = Post.new
+        @posts = Post.all
+        @comments = Comment.all
+        @comment = Comment.new
         format.html { redirect_to root_url, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
         format.js
