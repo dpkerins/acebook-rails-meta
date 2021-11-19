@@ -52,7 +52,7 @@
           <i class="bi bi-hand-thumbs-up"></i> <%= post.likes %> likes
         <% end %>
       <% end %>
-      <span class="text-muted"><%= post.comments.length %> comments</span>
+      <span class="text-muted" id="comment-number"><%= post.comments.length %> comments</span>
     </div>
     <!--Comment field-->
     <% if current_user %>
