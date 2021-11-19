@@ -11,6 +11,7 @@ class HomeController < ApplicationController
   end
 
   def like
+    redirect_to new_user_path unless current_user
     @like.liked_by = "" if @like.liked_by.nil?
     respond_to do |format|
       unless @like.liked_by.include?(",#{current_user.id},")
