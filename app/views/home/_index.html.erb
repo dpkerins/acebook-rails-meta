@@ -1,0 +1,11 @@
+<% if current_user %>
+  <div class="col-md-8" id="new-post-form">
+    <%= render 'posts/jsform', post: @post, page: 'home' %>
+  </div>
+<% end %>
+
+<% @posts.reverse_each do |post| %>
+  <div class="col-md-8"><!--Sets card width-->
+    <%= render 'posts/post', post: post %>
+  </div>
+<% end %>
