@@ -1,23 +1,25 @@
 <nav class="navbar sticky-top navbar-light bg-white border-bottom">
   <div class="container-fluid ms-4 align-items-center">
     <a class="navbar-brand mb-0 h1" style="color: #1877f2" href="/">metabook</a>
-    <div class="d-flex align-items-center">
-    <% if current_user %>
-      <div class="dropdown text-end px-2">
-        <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown">
-          <span class="pe-2">Welcome <%= current_user.first_name %>!</span>
-          <%= image_tag(avatar_for(current_user.id), class:"rounded-circle", alt:"avatar", style:"object-fit:cover; height:40px; width:40px;") %>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end text-small">
-          <li><%= link_to "Profile", user_path(current_user), method: :get, class:"dropdown-item" %></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><%= link_to "Log out", current_user_session, method: :delete, class:"dropdown-item" %></li>
-        </ul>
-      </div>
-    <% else %>
-      <%= link_to "Login", new_user_session_path, class:"btn btn-outline-primary me-2" %>
-      <%= link_to "Sign-up", new_user_path, class: "btn btn-primary" %>
-    <% end %>
+    <div class="d-flex align-items-center" id = "signup">
+      <%= render 'users/user_bar' %>
     </div>
   </div>
 </nav>
+<% unless current_user %>
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" id = "content_login">
+        <%= render 'users/log_in_modal' %>
+      </div>
+	  </div>
+  </div>
+
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+		  <div class="modal-content" id = "content_signup">
+        <%= render 'users/sign_up_modal', user: new_user %>
+  		</div>
+	  </div>
+  </div>
+<% end %>

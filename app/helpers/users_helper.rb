@@ -12,5 +12,9 @@ module UsersHelper
       "avatar_placeholder.png"
     end
   end
-
+  
+  def new_user
+    User.new
+  end 
+  
 end
