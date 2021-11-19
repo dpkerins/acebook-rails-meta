@@ -20,7 +20,7 @@
   <div class="col-md-8">
     <h5 class="mb-3">Recent posts</h5>
       <% if @posts.length == 0 %>
-        <small class="text-muted px-3">No posts<small>
+        <small class="text-muted px-3">No posts</small>
       <% else %>
         <% @posts.reverse_each do |post| %>
           <%= render 'posts/post', post: post %>
@@ -28,7 +28,7 @@
       <% end %>
     <h5 class="my-3">Recent comments</h5>
       <% if @comments.length == 0 %>
-        <small class="text-muted px-3">No comments<small>
+        <small class="text-muted px-3">No comments</small>
       <% else %>
         <% @comments.reverse_each do |comment| %>
           <% post = find_post_for_comment(comment.post_id) %>
