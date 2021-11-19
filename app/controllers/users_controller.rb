@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @posts = Post.where(user_id: @user)
     @comments = Comment.where(user_id: @user)
+    @comment = Comment.new
   end
 
   # GET /users/new

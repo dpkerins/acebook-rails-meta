@@ -1,4 +1,4 @@
-<div class="card mt-3">
+<div class="card mt-3" id="post-container-<%= post.id %>">
   <div class="d-flex justify-content-between py-2 px-3">
     <div class="d-flex flex-row align-items-center">
       <%= link_to user_path(post.user_id) do %>
@@ -34,7 +34,6 @@
     <div class="d-flex flex-row align-items-center pt-1">
       <small class="pe-1"><%= link_to 'View', post, class:"text-muted" %></small>
       <% if current_user %>
-      <small class="pe-1"><%= link_to 'Add Comment', new_comment_path(post_id: post.id), class:"text-muted" %></small>
       <% if current_user.id == post.user_id %>
         <small class="pe-1"><%= link_to 'Edit', edit_post_path(post), class:"text-muted" %></small>
         <small class="pe-1"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-muted" %></small>
@@ -55,10 +54,16 @@
       <% end %>
       <span class="text-muted"><%= post.comments.length %> comments</span>
     </div>
-    <!--Post comments-->
-    <% post.comments.reverse_each do |comment| %>
-      <hr>
-      <%= render 'comments/comment', comment: comment %>
+    <!--Comment field-->
+    <% if current_user %>
+      <%= render 'comments/jsform', comment: @comment, page: 'home', post_id: post.id %>
     <% end %>
+    <!--Post comments-->
+    <div id="comment-container-<%= post.id %>">
+      <% post.comments.reverse_each do |comment| %>
+        <hr>
+        <%= render 'comments/comment', comment: comment %>
+      <% end %>
+    </div>
   </div>
 </div>

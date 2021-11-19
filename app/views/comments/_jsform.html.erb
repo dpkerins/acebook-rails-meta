@@ -1,0 +1,19 @@
+<%= form_with(model: comment, local: false) do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="input-group mt-3">
+    <%= form.text_field :content, class:"form-control", placeholder:"Add a comment..." %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :post_id, value: post_id %>
+    <%= form.submit "Post", class:"btn btn-outline-primary", id:"new-comment-button" %>
+  </div>
+<% end %>
